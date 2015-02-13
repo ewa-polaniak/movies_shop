@@ -1,0 +1,11 @@
+.container.fluid
+  .row.center-block
+    .col-md-8.col-md-offset-2
+      %h3.text-center New movie
+
+      =render 'form'
+
+      %br
+        = link_to movies_path, class: 'btn btn-link' do
+          %span.glyphicon.glyphicon-backward
+          Back

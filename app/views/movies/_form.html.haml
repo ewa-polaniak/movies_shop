@@ -1,0 +1,31 @@
+-if @movie.errors.any?
+  %h2 "#{pluralize(@movie.errors.count, "error")} prohibited this movie from being saved:"
+  %ul
+  - @movie.errors.full_messages.each do |msg|
+    %li= msg
+    
+%h2 Create a new movie
+
+= form_for @movie do |f|
+  .field
+    = f.label 'Title'
+    %br/
+    = f.text_field :title, class: 'form-control'
+  .field
+    = f.label 'Description'
+    %br/
+    = f.text_field :description, class: 'form-control'
+  .field
+    = f.label 'Price'
+    %br/
+    = f.text_field :price, class: 'form-control'
+  .field
+    = f.label 'Genre'
+    %br/
+    = f.collection_select(:genre_id, Genre.all, :id, :name)
+  .field
+    %br/
+    = f.file_field :cover
+  %br
+  .actions
+    = f.submit 'Save', class: 'btn btn-info'
